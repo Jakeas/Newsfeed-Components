@@ -117,36 +117,38 @@ const data = [
 */
 const articles = document.querySelector('.articles')
 
-function articleMaker ({title, date, para1, para2, para3}) {
+function articleMaker (articleObj) {
   
   const article = document.createElement('div');
   const artTitle = document.createElement('h2');
   const artDate = document.createElement('p')
-  const artPara1 = document.createElement('p')
-  const artPara2 = document.createElement('p')
-  const artPara3 = document.createElement('p')
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagraph = document.createElement('p')
   const expandBtn = document.createElement('span')
 
   article.appendChild(artTitle)
   article.appendChild(artDate)
-  article.appendChild(artPara1)
-  article.appendChild(artPara2)
-  article.appendChild(artPara3)
+  article.appendChild(firstParagraph)
+  article.appendChild(secondParagraph)
+  article.appendChild(thirdParagraph)
   article.appendChild(expandBtn)
 
-  article.className = 'article'
+  article.className = 'article article-open'
   artDate.className = 'date'
   expandBtn.className = 'expandButton'
 
-  artTitle.textContent = title;
-  artDate.textContent = date;
-  artPara1.textContent = para1;
-  artPara2.textContent = para2;
-  artPara3.textContent = para3;
+  artTitle.textContent = articleObj.title;
+  artDate.textContent = articleObj.date;
+  firstParagraph.textContent = articleObj.firstParagraph;
+  secondParagraph.textContent = articleObj.secondParagraph;
+  thirdParagraph.textContent = articleObj.thirdParagraph;
   expandBtn.textContent = '+'
 
   expandBtn.addEventListener('click', function (event) {
-    expandBtn.classList.toggle('expandButton')
+    // expandBtn.classList.toggle('expandButton')
+    article.classList.toggle('article-open')
+
   })
 
   return article
