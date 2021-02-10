@@ -155,6 +155,21 @@ function articleMaker (articleObj) {
 }
 
 data.forEach(cardObj => {
-  articles.appendChild(articleMaker(cardObj))
+  let newArt = articleMaker(cardObj)
+  articles.appendChild(newArt)
 })
-// console.log(cardObj)
+const art1 = articleMaker({title: "Jake", date: '3/19/86', firstParagraph: "I was born and had parents and no cats.", secondParagraph: "I became a child with a brother and a cat.", thirdParagraph: "I am now an adult with a happy family and cats."})
+
+articles.appendChild(art1)
+
+const art2 = articleMaker({title: "Alex", date: '7/12/89', firstParagraph: "He was born and had parents and no cats.", secondParagraph: "He became a child with a brother and a dog but no cats.", thirdParagraph: "He is now an adult with a happy family and cats."})
+
+articles.appendChild(art2)
+
+const art3 = articleMaker({title: "Jasper", date: '4/12/11', firstParagraph: "He was adopted as a kitten.", secondParagraph: "He became a child with a brother cat and a sister cat.", thirdParagraph: "He is now an adult cat with a happy human family and cats siblings."})
+
+articles.appendChild(art3)
+
+// data.forEach(cardObj => {
+//   articles.appendChild(articleMaker(cardObj))
+// })
