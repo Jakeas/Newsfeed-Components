@@ -103,6 +103,7 @@ const data = [
     <span class="expandButton">+</span>
   </div>
 
+  
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -114,3 +115,61 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+const articles = document.querySelector('.articles')
+
+function articleMaker (articleObj) {
+  
+  const article = document.createElement('div');
+  const artTitle = document.createElement('h2');
+  const artDate = document.createElement('p')
+  const firstParagraph = document.createElement('p')
+  const secondParagraph = document.createElement('p')
+  const thirdParagraph = document.createElement('p')
+  const expandBtn = document.createElement('span')
+
+  article.appendChild(artTitle)
+  article.appendChild(artDate)
+  article.appendChild(firstParagraph)
+  article.appendChild(secondParagraph)
+  article.appendChild(thirdParagraph)
+  article.appendChild(expandBtn)
+
+  article.className = 'article article-open'
+  artDate.className = 'date'
+  expandBtn.className = 'expandButton'
+
+  artTitle.textContent = articleObj.title;
+  artDate.textContent = articleObj.date;
+  firstParagraph.textContent = articleObj.firstParagraph;
+  secondParagraph.textContent = articleObj.secondParagraph;
+  thirdParagraph.textContent = articleObj.thirdParagraph;
+  expandBtn.textContent = '+'
+
+  expandBtn.addEventListener('click', function (event) {
+    // expandBtn.classList.toggle('expandButton')
+    article.classList.toggle('article-open')
+
+  })
+
+  return article
+}
+
+data.forEach(cardObj => {
+  let newArt = articleMaker(cardObj)
+  articles.appendChild(newArt)
+})
+const art1 = articleMaker({title: "Jake", date: '3/19/86', firstParagraph: "I was born and had parents and no cats.", secondParagraph: "I became a child with a brother and a cat.", thirdParagraph: "I am now an adult with a happy family and cats."})
+
+articles.appendChild(art1)
+
+const art2 = articleMaker({title: "Alex", date: '7/12/89', firstParagraph: "He was born and had parents and no cats.", secondParagraph: "He became a child with a brother and a dog but no cats.", thirdParagraph: "He is now an adult with a happy family and cats."})
+
+articles.appendChild(art2)
+
+const art3 = articleMaker({title: "Jasper", date: '4/12/11', firstParagraph: "He was adopted as a kitten.", secondParagraph: "He became a child with a brother cat and a sister cat.", thirdParagraph: "He is now an adult cat with a happy human family and cats siblings."})
+
+articles.appendChild(art3)
+
+// data.forEach(cardObj => {
+//   articles.appendChild(articleMaker(cardObj))
+// })
